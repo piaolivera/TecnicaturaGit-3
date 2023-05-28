@@ -7,10 +7,9 @@ try:
     setencia = 'INSERT INTO persona(nombre, apellido, email)VALUES(%s, %s, %s)'
     valores = ('Maria', 'Esparza', 'mesparza@gmail.com')
     cursor.execute(setencia, valores)
-    conexion.commit() #Hacemos el commit manualmente
     print('Termina la transacción')
 except Exception as e:
     conexion.rollback()
-    print(f'Ocurrio un error, se hizo un rollback {e}')
+    print(f'Ocurrio un error {e}')
 finally:
      conexion.close()
