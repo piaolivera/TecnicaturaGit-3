@@ -8,10 +8,21 @@ let persona = {
     nombre: 'Carlos',
     apellido: 'Gil',
     email: 'cgil@gmail.com',
-    edad: 30,
+    edad: 28,
+    idioma : 'ES',
+    get lang(){
+        return this.idioma.toUpperCase();
+    },
+    set lang(lang){
+        this.idioma =lang.toUpperCase(); //Convierte loas minúsculas a mayúsculas
+    },
     nombreCompleto: function(){// método o función en JavaScript
         return this.nombre+ ' '+ this.apellido;
+    },
+    get nombreEdad(){ // Este es el método get
+        return 'El nombre es'+ this.nombre+' edad: '+ this.edad;
     }
+    
 }
 
 console.log(persona.nombre);
@@ -68,5 +79,58 @@ console.log('Numero4: Utilizaremos el método JSON.stringfy');
 let personaString = JSON.stringify(persona);
 console.log(personaString)
 
+console.log('Comenzamos a utilizar el método get');
+console.log(persona.nombreEdad);
 
 
+console.log('Comenzamos con el método get y set para idioma');
+persona.lang = 'en';
+console.log(persona.lang);
+
+
+function Persona3( nombre, apellido, email){ //constuctor
+    this.nombre= nombre;
+    this.apellido = apellido;
+    this.email =email;
+    this.nombrembreCompleto = function(){
+        return this.nombre+ ' '+this.apellido;
+    }
+}
+let padre = new Persona3('Leo', 'Lopez', 'lopezleo@gmail.com');
+console.log(padre);
+console.log(padre.nombrembreCompleto());
+
+let madre= new Persona3('Laura', 'Contreras', 'laura@gmai.com');
+console.log(madre);
+console.log(madre.nombrembreCompleto());
+
+
+//Diferentes formas de crear objetos
+let miObjeto = new Object();
+//Caso numero2
+let miObjeto2 = {}; // Esta opcion es breve y recomendada
+
+//caso String
+let miCadena1 = new String ('Hola');
+// caso String2 
+let miCadena2 = 'Hola';
+
+//uso de call
+let persona4 ={
+    nombre: 'Juan',
+    apellido: 'Perez',
+    nombreCompleto2: function(titulo, telefono){
+       return titulo+ this.nombre+ ' '+ this.apellido+' '+telefono;
+        //  return this.nombre+ ' '+ this.apellido;
+    }
+}
+let persona5= {
+    nombre: 'Carlos',
+    apellido: 'Lara'
+}
+console.log(persona4.nombreCompleto2('Lic.', '6562685'));
+console.log(persona4.nombreCompleto2.call(persona5, 'ing.', '54874575'));
+
+//Método Apply
+let arreglo = ['Ing.', '662842855'];
+console.log(persona4.nombreCompleto2.apply(persona5, arreglo));
