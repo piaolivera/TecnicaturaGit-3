@@ -51,8 +51,3 @@ console.log(persona2.apellido);
 let empleado1 = new Empleado('María', 'Gimenez', 'Sistemas');
 console.log(empleado1);
 console.log(empleado1.nombre);
-
-
-
-
-
