@@ -15,6 +15,13 @@ class Persona{ //Clase padre
     set apellido(apellido){
         return this._apellido= apellido;
     }
+    nombreCompleto(){
+        return this._nombre +' '+ this._apellido;
+    }
+    //SobreEscribiendo el método de la clase padre (Object)
+    toString(){ 
+        return  this.nombreCompleto();
+    }
 }
 
 class Empleado extends Persona{ //empleado clase hija
@@ -28,6 +35,11 @@ class Empleado extends Persona{ //empleado clase hija
     }
     set departamento(departamento){
         this._departamento = departamento; 
+    }
+
+    //SobreEscritura = Modificicar el comportamiento de algun método em la clase padre
+    nombreCompleto(){
+        return super.nombreCompleto()+ ', '+this._departamento;
     }
 }
 
@@ -50,4 +62,8 @@ console.log(persona2.apellido);
 
 let empleado1 = new Empleado('María', 'Gimenez', 'Sistemas');
 console.log(empleado1);
-console.log(empleado1.nombre);
+console.log(empleado1.nombreCompleto());
+
+//Object.prototype.toString Esta es la manera de acceder a atributos de manera dinamica
+console.log(empleado1.toString());
+console.log(persona1.toString());
